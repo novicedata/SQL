@@ -41,4 +41,5 @@
 <br>
 
   * **ERD(Entity Relationship Diagram)**
-    * 표기 방식
+    * [표기 방식](https://github.com/novicedata/SQL/blob/main/ERD/%ED%91%9C%EA%B8%B0%EB%B0%A9%EC%8B%9D.png)
+    * [IE/Corw's Foot 표기법](https://github.com/novicedata/SQL/blob/main/ERD/Crowfoot%ED%91%9C%EA%B8%B0%EB%B2%95.png)
