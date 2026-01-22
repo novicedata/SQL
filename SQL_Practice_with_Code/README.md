@@ -98,3 +98,32 @@
   
  - 범위 지정: `select * from '테이블 명' where '조건 열' between '하한값' and '상한값'`
 </details>
+
+<details>  
+  <summary>  👉 ORDER BY(내림, 오른차순) </summary>
+
+- 정순: `select * from '테이블 명' order by '기준 열' asc`
+- 역순: `select * from '테이블 명' order by '기준 열' desc`
+
+- 다중 칼럼 기준: `select * from '테이블 명' order by '기준 열1', '기준 열2'`
+</details>
+
+<details>  
+  <summary>  👉 GROUP BY(그룹핑) </summary>
+
+- 집계 함수와 그룹핑: `select '볼 열', '집계 함수1', '집계 함수2', ... from '테이블 명' group by '볼 열'`
+- 예시:
+  ```SQL
+  select animal, max(age), avg(age) from animal_info group by animal;
+  ```
+
+- 기준 2개: `select '열1', '열2', '집계 함수1', '집계 함수2', ... from '테이블 명' group by '열1', '열2'`
+  
+- 조건도 가능: `select '볼 열', '집계 함수' from '테이블 명' where '조건절' group by '볼 열'`
+</details>
+
+<details>  
+  <summary>  👉 HAVING(GROUP BY뒤에 위치한 조건(그룹화 조건)) </summary>
+
+- `select '볼 열', '집계 함수' from '테이블 명' group by '볼 열' having '조건'`
+</details>
