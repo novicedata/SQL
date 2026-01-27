@@ -1,5 +1,9 @@
 # SQL Practice
 
+- [`연습1(select query)`](https://github.com/novicedata/SQL/tree/main/SQL_Practice_with_Code/camping)
+- [`연습2(select, join, sub query)`](https://github.com/novicedata/SQL/tree/main/SQL_Practice_with_Code/highway)
+- [`연습3(count, join, sub query)`](https://github.com/novicedata/SQL/tree/main/SQL_Practice_with_Code/weather)
+
 ## DDL
 
 <details>  
@@ -332,4 +336,78 @@
     from employees
     order by department_id, row_no;
     ```
+</details>
+
+## 추가 function
+
+<details>  
+  <summary>  👉 null function </summary>
+
+- null이면 대체
+  - `select ifnull('실제데이터', '대체값') from dual;`
+  - `select ifnull(null, '대체값') from dual;`
+ 
+- 주어진 argument 중 null이 아닌 최초값 반환
+  - `select coalesce('데이터1', '데이터2', ... '데이터x') from dual;`
+
+- 같으면 null: `select nullif('데이터', '데이터') from dual`
+- 다르면 첫번째를 반환: `select nullif('데이터', '데이터1') from dual`
+
+- null이면 1반환: `select isnull('데이터') from dual;`
+</details>
+
+<details>  
+  <summary>  👉 str function </summary>
+
+- substring(규칙에 맞게 자름)
+  - x부터 y까지 자르기: `select substring(문자열, x, y) from dual;`
+  - x부터 끝까지 자르기: `select substring(문자열, x) from dual;`
+
+- length, concat, upper, lower
+  - 바이트 계산(한글은 3바이트): `select length(문자열) from dual;`
+  - 합치기: `select concat(문자열1, 문자열2) from dual;`
+  - 대문자: `select upper(문자열) from dual;`
+  - 소문자: `select lower(문자열) from dual;`
+ 
+- trim, instr, replace, lpad
+  - 앞뒤 공백 정리: `select trim(문자열) from dual;`
+  - 찾고자 하는거 몇번째에 있는지: `select instr(문자열) from dual;`
+  - 원하는 x 찾아서 y로 대체: `select replace(문자열, x, y) from dual;`
+  - input이 x자리수 못채우면 나머지 자리 y로 채우기
+    - `select lpad(문자열, x, y) from dual;`
+</details>
+
+<details>  
+  <summary>  👉 num function </summary>
+
+- round(반올림)
+  - `select round(숫자) from dual;`
+  - x자리 반올림: `select round(숫자, x) from dual;`
+
+- floor(버림), ceil(올림)
+  - 소수점 버림: `select floor(숫자) from dual;`
+  - 올림: `select ceil(숫자) from dual;`
+ 
+- abs(절대값), sign(양수 or 음수), mod(나머지)
+  - 절대값: `select abs(숫자) from dual;`
+  - 양수면 1, 음수면 -1 반환: `select sign(숫자) from dual;`
+  - 나머지 반환: `select mod(숫자) from dual;`
+</details>
+
+<details>  
+  <summary>  👉 date function </summary>
+
+- now, sysdate, current_date
+  - 현재 시간: `select now() from dual;`
+  - 시스템 시간: `select sysdate() from dual;`
+  - 년월일: `select current_date() from dual;`
+
+- adddate, last_day
+  - x일 만큼 더하기: `select adddate(now(), x) from dual;`
+  - 월 마지막 날: `select last_day(now()) from dual;`
+ 
+- year, month, day
+  - 년: `select year(now()) from dual;`
+  - 월: `select month(now()) from dual;`
+  - 일: `select day(now()) from dual;`
 </details>
