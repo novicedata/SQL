@@ -1,3 +1,5 @@
+https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=0%2C1&languages=mysql
+
 ### LV1
 
 <details>
