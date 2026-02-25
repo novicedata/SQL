@@ -108,31 +108,101 @@
 <details>
   <summary><strong> 4️⃣ WHERE 절 </stong></summary>
 
-- 가로 연산(인스턴스 연산): NULL 포함되어 있으면 결과값 NULL
+- 원하는 파트만 골라 수행할 수 있는 조건문
+
+- **비교 연산자**
+  - `=, <, <=, >, <=`: 같음, 작음, 작거나 같음, 큼, 크거나 같음
+    > `where col = 10` 등
+
+- **부정 비교 연산자**
+  - `!=, ^=, <>, not 칼럼명=` : 같지 않음
+  - `not 칼럼명 >` : 크지 않음
+ 
+- **SQL 연산자**
+  - `BETWEEN A AND B` : A와 B사이 포함 여부
+  - `LIKE '비교 문자열'` : 비교 문자열 포함 여부
+  - `IN (LIST)` : LIST 중 하나의 값과 일치 여부
+  - `IS NULL` : NULL 값
+
+- **부정 SQL 연산자**
+  - `NOT BETWEEN A AND B` : A와 B사이 포함 아님 여부
+  - `NOT IN (LIST)` : LIST 값중 일치하는 것 없음 여부
+  - `IS NOT NULL` : NULL 값 아님
+
+- **논리 연산자**
+  - `AND`: 모든 조건 TRUE여야
+  - `OR`: 하나 이상의 조건이 TRUE여야
+  - `NOT`: TRUE면 FALSE, FALSE면 TRUE 
 </details>
 
 <details>
   <summary><strong> 5️⃣ GROUP BY, HAVING 절 </stong></summary>
 
-- **본질식별자**: 업무 프로세스에 존재하는 식별자, 가공되지 않은 원래의 식별자, 원조식별자
+- **GROUP BY**: 데이터를 그룹별로 묶을 수 있게 해줌
+
+- **집계 함수**: 그룹별로 나눈 후 그룹별 집계 데이터 도출에 사용되는 함수
+  - `COUNT, SUM, AVG, MIN, MAX`: 총계, 총합, 평균, 최소, 최대
+  - `COUNT(DISTINCT 칼럼)`: 칼럼에서 NULL이 아닌 행에서 중복제거한 총계
+ 
+- **HAVING**: GROUP BY절 사용할 때 WHERE절 처럼 사용하는 조건절
+  - 쿼리 수행 순서에 따라 알맞게 사용해야 함
+    > <img width="207" height="193" alt="image" src="https://github.com/user-attachments/assets/eda1e9dc-6d36-430e-ae28-e278441dd72d" />
+
 </details>
 
 <details>
   <summary><strong> 6️⃣ ORDER BY 절 </stong></summary>
 
-- **본질식별자**: 업무 프로세스에 존재하는 식별자, 가공되지 않은 원래의 식별자, 원조식별자
+- **ORDER BY**: 데이터 정렬
+  - **ASC, DECS**: 오름차순, 내림차순
 </details>
 
 <details>
   <summary><strong> 7️⃣ JOIN </stong></summary>
 
-- **본질식별자**: 업무 프로세스에 존재하는 식별자, 가공되지 않은 원래의 식별자, 원조식별자
+- **JOIN**: 각기 다른 테이블을 한 번에 보여줄 때
+
+- **EQUI JOIN**: Equal(=)을 조건으로 JOIN하는 가장 흔한 JOIN 방식
+  > <img width="630" height="462" alt="image" src="https://github.com/user-attachments/assets/f93a1ee1-09fb-4d4e-8ee0-f3f48cb4e87a" />
+
+- **Non EQUI JOIN**: Equal이 아닌 다른 조건 (BETWEEN, >, < 등)으로 JOIN하는 방식
+  > <img width="604" height="446" alt="image" src="https://github.com/user-attachments/assets/72b143fd-6cf7-48a2-a9d6-68c10c9fc675" />
+
+- **3개 이상 TABLE JOIN**
+  > <img width="533" height="241" alt="image" src="https://github.com/user-attachments/assets/c612d53f-725d-4a28-ad21-95ee7ec12b7a" />
+
+- **OUTER JOIN**: JOIN 조건에 만족하지 않는 행들도 출력되는 형태
+  > <img width="485" height="323" alt="image" src="https://github.com/user-attachments/assets/852adc97-d2b4-476d-92bf-bce56015bd3d" />
+  > <img width="613" height="460" alt="image" src="https://github.com/user-attachments/assets/0e31e8a9-6ab2-4b23-8bf4-a450ac489aff" />
+
 </details>
 
 <details>
   <summary><strong> 8️⃣ STANDARD JOIN </stong></summary>
 
-- **본질식별자**: 업무 프로세스에 존재하는 식별자, 가공되지 않은 원래의 식별자, 원조식별자
+- **STANDARD JOIN**: 표준이 되는 ANSI SQL중 하나로 어느 RDBMS에서든 사용 가능
+
+- **INNER JOIN**: JOIN 조건에 충족하는 데이터만 출력되는 방식
+  > <img width="232" height="141" alt="image" src="https://github.com/user-attachments/assets/55bcd769-150b-416c-88dd-1e0cfb38ad41" />
+
+- **OUTER JOIN**: JOIN에 충족하는 데이터가 아니어도 출력될 수 있는 방식
+  - **LEFT OUTER JOIN**: 왼쪽에 표기된 테이블의 데이터는 무조건 출력되는 JOIN
+    > <img width="616" height="384" alt="image" src="https://github.com/user-attachments/assets/088d3577-eaad-4121-9ab6-36782a3462f3" />
+    > <img width="658" height="230" alt="image" src="https://github.com/user-attachments/assets/04334e7f-63b9-475f-915d-7519784cb631" />
+
+  - **RIGHT OUTER JOIN**: 오른쪽에 표기된 테이블의 데이터는 무조건 출력되는 JOIN
+    > <img width="650" height="610" alt="image" src="https://github.com/user-attachments/assets/714a5d0f-908b-4801-9cd6-2562d69408c1" />
+
+  - **FULL OUTER JOIN**: 왼쪽, 오른쪽 테이블 데이터가 모두 출력되는 JOIN
+    > <img width="239" height="150" alt="image" src="https://github.com/user-attachments/assets/972bc683-9493-4cdc-b342-388586068bd9" />
+    > <img width="327" height="245" alt="image" src="https://github.com/user-attachments/assets/7aa0017f-31f0-455f-bb6c-3c2c53c397dc" />
+    > <img width="611" height="578" alt="image" src="https://github.com/user-attachments/assets/2da82a3d-4bdf-4357-a729-f787834806b1" />
+
+- **NATURAL JOIN**: A 테이블과 B 테이블에서 같은 이름을 가진 칼럼들이 모두 동일한 데이터를 가지고 있을 경우 JOIN되는 방식
+  > <img width="562" height="585" alt="image" src="https://github.com/user-attachments/assets/1b7fdc1f-efa5-435f-a111-43fe62ac6ff2" />
+
+- **CROSS JOIN**: A 테이블과 B 테이블 사이 JOIN 조건이 없는 경우 조합할 수 있는 모든 경우를 출력
+  > <img width="563" height="679" alt="image" src="https://github.com/user-attachments/assets/a3878c55-9033-4d52-a212-eba6f31eb2e0" />
 </details>
 
 ---
