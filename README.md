@@ -11,7 +11,7 @@
 ### 📌 데이터 기본 및 활용
 
 #### 1) SQL 기본([개념 노트 링크](https://github.com/novicedata/SQL/blob/main/SQL%20%EA%B8%B0%EB%B3%B8.md))
-#### 2) SQL 활용([개념 노트]())
+#### 2) SQL 활용([개념 노트 링크](https://github.com/novicedata/SQL/blob/main/SQL%20%ED%99%9C%EC%9A%A9.md))
 #### 3) 관리구문([개념 노트]())
 
 ---
