@@ -159,35 +159,82 @@
 <details>
   <summary><strong> 6️⃣ Top-N 쿼리 </stong></summary>
 
-- **ORDER BY**: 데이터 정렬
+- **ROWNUM**: 슈도 칼럼
+  > <img width="488" height="372" alt="image" src="https://github.com/user-attachments/assets/5ac253f2-f156-4f5a-9e49-3a5c49082758" />
+
+- **윈도우 함수의 순위 함수**
+  > <img width="659" height="282" alt="image" src="https://github.com/user-attachments/assets/fe1bebd0-b49d-494b-a0dd-3531eab482b7" />
 
 </details>
 
 <details>
   <summary><strong> 7️⃣ 셀프 조인 </stong></summary>
 
-- **JOIN**: 각기 다른 테이블을 한 번에 보여줄 때
+- **셀프 조인**: 나 자신과의 조인. FROM 절에 같은 테이블이 두 번 이상 등장하기 때문에 혼란을 막기 위해 ALIAS를 반드시 표기해주어야 함
+  > <img width="529" height="270" alt="image" src="https://github.com/user-attachments/assets/51c388a5-6eae-4237-8c24-7a77975df788" />
+  > <img width="538" height="227" alt="image" src="https://github.com/user-attachments/assets/35167206-f170-4e59-bb01-474935dc0db4" />
 
 </details>
 
 <details>
   <summary><strong> 8️⃣ 계층 쿼리 </stong></summary>
 
-- **STANDARD JOIN**: 표준이 되는 ANSI SQL중 하나로 어느 RDBMS에서든 사용 가능
+- **계층 쿼리**: 계층 구조를 이루는 쿼리가 존재할 경우 계층 쿼리를 이용하여 데이터 출력 가능
+  > <img width="672" height="303" alt="image" src="https://github.com/user-attachments/assets/40d2ff9a-f7c9-41bc-9f73-397d784bf96f" />
+
+- **구문**
+  - **LEVEL**: 현재의 depth를 반환(루트 노드가 1)
+  - **SYS_CONNECT_BY_PATH (칼럼, 구분자)**: 루트 노드부터 현재 노드까지의 경로 출력
+  - **START WITH**: 경로가 시작되는 루트 노드를 생성해주는 절
+  - **CONNECT BY**: 루트로부터 자식 노드를 생성해주는 절
+  - **PRIOR**: 바로 앞에 있는 부모 노드 값 반환
+  - **CONNECT_BY_ROOT 칼럼**: 루트 노드의 주어진 칼럼 값 반환
+  - **CONNECT_BY_ISLEAF**: 가장 하위 노드인 경우 1 반환, 그 외 0 반환
+ 
+> <img width="552" height="668" alt="image" src="https://github.com/user-attachments/assets/0b3b671f-1014-4dbb-919e-68b7b3c7f0f2" />
+> <img width="663" height="346" alt="image" src="https://github.com/user-attachments/assets/7171c734-54c2-41a6-9e9a-0a1926872116" />
+
 
 </details>
 
 <details>
-  <summary><strong> 9️⃣ 계층 쿼리 </stong></summary>
+  <summary><strong> 9️⃣ PIVOT, UNPIVOT </stong></summary>
 
-- **STANDARD JOIN**: 표준이 되는 ANSI SQL중 하나로 어느 RDBMS에서든 사용 가능
+- **PIVOT절 구성 요소**
+  - 집계 함수: 결과 데이터에 표시할 집계 데이터 정의
+  - FOR 절: PIVOT할 칼럼 지정
+  - IN 절: PIVOT할 칼럼 값 지정 
+  > <img width="438" height="240" alt="image" src="https://github.com/user-attachments/assets/f82c9a8f-74d0-4ec0-a15d-f83ae150ce62" />
+  > <img width="619" height="201" alt="image" src="https://github.com/user-attachments/assets/ed7ca6ad-8d6a-4eb8-a0d9-790749a1c0d7" />
+
+- **UNPIVOT**: PIVOT 반대
+
+- **문법 비교**
+  > <img width="654" height="220" alt="image" src="https://github.com/user-attachments/assets/7722be5c-3632-48df-91d2-450379297e0a" />
 
 </details>
 
 <details>
-  <summary><strong> 🔟 계층 쿼리 </stong></summary>
+  <summary><strong> 🔟 정규표현식 </stong></summary>
 
-- **STANDARD JOIN**: 표준이 되는 ANSI SQL중 하나로 어느 RDBMS에서든 사용 가능
+- **REGEXP_SUBSTR**: 문자열에서 특정 패턴에 맞는 부분 추출 함수
+  > <img width="391" height="124" alt="image" src="https://github.com/user-attachments/assets/87e0dba3-970e-4c91-bd72-2fe76b0677b9" />
+
+- **정규 표현식 기본 연산자**
+
+> <img width="651" height="354" alt="image" src="https://github.com/user-attachments/assets/6f87e6d9-2049-4cfa-89d5-e3c9f694088e" />
+> <img width="667" height="151" alt="image" src="https://github.com/user-attachments/assets/cf806829-9027-4915-9f86-691b987e158a" />
+> <img width="671" height="227" alt="image" src="https://github.com/user-attachments/assets/1db00b7f-6c1f-4980-9cdb-d838620bd18c" />
+> <img width="614" height="141" alt="image" src="https://github.com/user-attachments/assets/d551602c-15ce-48ea-9bd7-2c0094e29de0" />
+
+> <img width="667" height="127" alt="image" src="https://github.com/user-attachments/assets/d53c7c42-367d-44ae-b347-f81d345ab3a3" />
+> <img width="667" height="291" alt="image" src="https://github.com/user-attachments/assets/977ddf22-9228-4683-bfb6-562af9957965" />
+
+- **REGEXP_REPLACE**: 문자열 내 정규표현식 패턴과 일치하는 부분 찾아 지정한 다른 문자열로 대체
+- **REGEXP_INSTR**: 문자열에서 정규표현식 패턴과 일치하는 부분의 위치 반환
+- **REGEXP_COUNT**: 문자열 내에서 정규표현식 패턴과 일치하는 부분이 몇 번 나타나는지 계산
+- **REGEXP_LIKE 조건**: 정규표현식을 사용하여 문자열 패턴과 일치하는지 여부를 확인하는 조건 식
 
 </details>
+
 ---
