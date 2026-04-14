@@ -135,3 +135,43 @@ https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=0
     ```
 
 </details>
+
+
+
+### LV2
+
+<details>
+  <summary> FLOOR 이용 범주 나누기 </summary>
+
+- https://school.programmers.co.kr/learn/courses/30/lessons/131530
+- 풀이
+  - 가격대별 범주를 어떻게 하느냐
+
+- 옳은 답안
+  - ```SQL
+    SELECT 
+        FLOOR(PRICE/10000)*10000 AS PRICE_GROUP,
+        COUNT(*) AS PRODUCTS
+    FROM PRODUCT
+    GROUP BY PRICE_GROUP
+    ORDER BY PRICE_GROUP;
+    ```
+</details>
+
+<details>
+  <summary> 분기 나누기(QUARTER) </summary>
+
+- https://school.programmers.co.kr/learn/courses/30/lessons/299308
+- 풀이
+  - 가격대별 범주를 어떻게 하느냐
+
+- 옳은 답안
+  - ```SQL
+    SELECT
+      CONCAT(QUARTER(DIFFERENTIATION_DATE), 'Q') AS QUARTER,
+      COUNT(*) AS ECOLI_COUNT
+    FROM ECOLI_DATA 
+    GROUP BY CONCAT(QUARTER(DIFFERENTIATION_DATE), 'Q')
+    ORDER BY QUARTER ASC;
+    ```
+</details>
