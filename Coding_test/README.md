@@ -175,3 +175,79 @@ https://school.programmers.co.kr/learn/challenges?order=acceptance_desc&levels=0
     ORDER BY QUARTER ASC;
     ```
 </details>
+
+<details>
+  <summary> 업그레이드 아이템 확인(부모자식 JOIN) </summary>
+
+- https://school.programmers.co.kr/learn/courses/30/lessons/273711
+- 풀이
+  - 부모, 자식 인덱스롤 JOIN 해서 풀 수 있다
+
+- 옳은 답안
+  - ```SQL
+    SELECT I.ITEM_ID, I.ITEM_NAME, I.RARITY
+    FROM ITEM_INFO I
+    JOIN ITEM_TREE T
+        ON T.ITEM_ID = I.ITEM_ID
+    JOIN ITEM_INFO P
+        ON T.PARENT_ITEM_ID = P.ITEM_ID
+    WHERE P.RARITY = 'RARE'
+    ORDER BY I.ITEM_ID DESC
+    ```
+</details>
+
+<details>
+  <summary> 연도별 편차(서브쿼리, 윈도우) </summary>
+
+- https://school.programmers.co.kr/learn/courses/30/lessons/299310
+- 풀이
+  - 내 풀이: 연도별 최댓값 구하는 서브쿼리 활용
+  - ```SQL
+    SELECT
+        B.YEAR,
+        B.MAX_SIZE - A.SIZE_OF_COLONY AS YEAR_DEV,
+        A.ID
+    FROM ECOLI_DATA A
+    LEFT JOIN (
+        SELECT 
+            YEAR(DIFFERENTIATION_DATE) AS YEAR,
+            MAX(SIZE_OF_COLONY) AS MAX_SIZE
+        FROM ECOLI_DATA
+        GROUP BY YEAR(DIFFERENTIATION_DATE)
+    ) B
+    ON YEAR(A.DIFFERENTIATION_DATE) = B.YEAR
+    ORDER BY B.YEAR, YEAR_DEV;
+    ```
+
+- 옳은 답안
+- 윈도우 FUNCTION 사용하면 훨 쉬
+  - ```SQL
+    SELECT YEAR(DIFFERENTIATION_DATE) AS YEAR, 
+          MAX(SIZE_OF_COLONY) OVER (PARTITION BY YEAR(DIFFERENTIATION_DATE)) - SIZE_OF_COLONY AS YEAR_DEV, ID
+    FROM ECOLI_DATA
+    ORDER BY YEAR, YEAR_DEV
+    ```
+</details>
+
+<details>
+  <summary> 조건에 맞는 개발자 찾(비트연산) </summary>
+
+- https://school.programmers.co.kr/learn/courses/30/lessons/276034
+- 풀이
+  - 연산자 &의 경우 AND로 SKILL_CODE안에 CODE에 해당하는 비트가 커져있으면 0보다 큰값
+  - 내부적으로 SKILL_CODE와 CODE의 각행을 하나씩 비교해서 0보다 큰지를 확인하는 것
+  - 확인해서 크면 1로 해당하는 것만 조
+
+  - ```SQL
+    SELECT DISTINCT
+        D.ID,
+        D.EMAIL,
+        D.FIRST_NAME,
+        D.LAST_NAME
+    FROM DEVELOPERS D
+    JOIN SKILLCODES S
+    ON D.SKILL_CODE & S.CODE > 0
+    WHERE S.NAME IN ('Python', 'C#')
+    ORDER BY D.ID ASC;
+    ```
+</details>
